@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DISQUS_WEBSITE_SHORTNAME = 'mybootcampblog'
+SITE_ID = 1
+
 
 # Application definition
 
@@ -37,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog',
+    'django.contrib.sites',
+    'disqus'
 ]
 
 MIDDLEWARE = [
