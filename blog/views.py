@@ -4,7 +4,13 @@ from .models import Post
 from .forms import BlogPostForm
 from django.shortcuts import redirect
  
- 
+
+def im_home (request):
+    return render(request, 'home.html')
+
+def contact_us(request):
+    return render(request, 'contact.html')
+
 def post_list(request):
     """
     Create a view that will return a
