@@ -45,11 +45,11 @@
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
                         {% if user.is_authenticated %}
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="{% url 'profile' %}">Profile</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{% url 'logout' %}">Log Out</a></li>
                         {% else %}
-                            <li><a href="#">Log In</a></li>
+                            <li><a href="{% url 'login' %}?next={% url 'profile' %}">Log In</a></li>
                             <li><a href="#">Register</a></li>
                         {% endif %}
                     </ul>
