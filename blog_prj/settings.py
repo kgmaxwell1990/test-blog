@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'disqus',
     'django_forms_bootstrap',
     'django_gravatar',
+    'accounts',
 ]
 
 MIDDLEWARE = [

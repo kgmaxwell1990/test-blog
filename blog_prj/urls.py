@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.views.static import serve
 from .settings import MEDIA_ROOT
 from blog.views import im_home, contact_us
+from accounts import urls as accounts_urls
 
 from blog import urls as blog_urls
 
@@ -27,4 +28,5 @@ urlpatterns = [
     url(r'^contact$', contact_us),
     url(r'^blog/', include(blog_urls)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+    url(r'^user/', include(accounts_urls)),
 ]
