@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'disqus',
     'django_forms_bootstrap',
+    'django_gravatar',
 ]
 
 MIDDLEWARE = [

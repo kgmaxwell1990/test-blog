@@ -23,7 +23,7 @@ from blog import urls as blog_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', im_home),
+    url(r'^$', im_home, name="index"),
     url(r'^contact$', contact_us),
     url(r'^blog/', include(blog_urls)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
