@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^blog/', include(blog_urls)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     url(r'^user/', include(accounts_urls)),
+    url(r'^accounts/', include(accounts_urls)),
 ]
