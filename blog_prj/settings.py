@@ -21,12 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'h4(be*z2a11(!9*@k8&5joodxl#+h$f1=zrr+y*%idoj+i0vz4'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ['secret-basin-14353.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['secret-basin-14353.herokuapp.com', 'localhost', '127.0.0.1' ]
+INTERNAL_IPS = ['127.0.0.1']
 
 DISQUS_WEBSITE_SHORTNAME = 'mybootcampblog'
 SITE_ID = 1
@@ -51,9 +52,11 @@ INSTALLED_APPS = [
     'django_gravatar',
     'accounts',
     'storages',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,16 +91,15 @@ WSGI_APPLICATION = 'blog_prj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
-# DATABASE_URL = os.environ.get('DATABASE_URL')
-
-# DATABASES = {'default': dj_database_url.parse(DATABASE_URL) }
+DATABASE_URL = os.environ.get('DATABASE_URL')
+DATABASES = {'default': dj_database_url.parse(DATABASE_URL) }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

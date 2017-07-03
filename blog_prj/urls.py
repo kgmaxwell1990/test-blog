@@ -19,6 +19,7 @@ from django.views.static import serve
 from .settings import MEDIA_ROOT
 from blog.views import im_home, contact_us
 from accounts import urls as accounts_urls
+from django.conf import settings
 
 from blog import urls as blog_urls
 
@@ -31,3 +32,9 @@ urlpatterns = [
     url(r'^user/', include(accounts_urls)),
     url(r'^accounts/', include(accounts_urls)),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
